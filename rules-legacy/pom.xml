@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.evrete.komet</groupId>
+        <artifactId>komet-evrete-guide</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>rules-legacy</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.evrete.komet</groupId>
+            <artifactId>common</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.evrete.komet</groupId>
+            <artifactId>processor</artifactId>
+            <version>${revision}</version>
+        </dependency>
+
+        <!-- Legacy rule engine-->
+        <dependency>
+            <groupId>dev.ikm.evrete</groupId>
+            <artifactId>evrete-core</artifactId>
+            <version>3.0.04-ikm-r2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.ikm.evrete</groupId>
+            <artifactId>evrete-dsl-java</artifactId>
+            <version>3.0.04-ikm-r2</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessors>org.evrete.komet.benchmark.CloneRuleProcessor</annotationProcessors>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

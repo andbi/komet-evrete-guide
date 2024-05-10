@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.evrete.komet</groupId>
+    <artifactId>komet-evrete-guide</artifactId>
+    <version>${revision}</version>
+    <packaging>pom</packaging>
+    <modules>
+        <module>rules-legacy</module>
+        <module>rules-new</module>
+        <module>performance</module>
+        <module>processor</module>
+        <module>common</module>
+    </modules>
+
+    <properties>
+        <revision>1.0-SNAPSHOT</revision>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <jmh.version>1.37</jmh.version>
+        <evrete.version>3.2.02</evrete.version>
+        <komet.group>dev.ikm.komet</komet.group>
+        <komet.version>1.26.0</komet.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.11.0</version>
+                    <configuration>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+    <dependencies>
+        <!-- Komet dependencies -->
+        <dependency>
+            <groupId>${komet.group}</groupId>
+            <artifactId>rules</artifactId>
+            <version>${komet.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.evrete</groupId>
+                    <artifactId>evrete-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.evrete</groupId>
+                    <artifactId>evrete-dsl-java</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+</project>
